@@ -36,7 +36,7 @@ const player = {
     }
 };
 
-let isKeyPressed = false;
+// let isKeyPressed = false;
 
 start();
 gameLoop();
@@ -61,51 +61,64 @@ function refreshScreen() {
     }
 
     // drawing the player
-    buffer[player.position.y][player.position.x] = "<b>#</b>";
+    buffer[player.position.y][player.position.x] = "<b style=\"color:white;\">#</b>";
 }
 function gameLoop() {
     // refresh the buffer
     refreshScreen();
 
-    // check pressed keys
-    window.addEventListener('keyup', function(event) {
-        switch (event.key){
-            case 'w' || 'W':
-                isKeyPressed = false;
-                break;
-            case 's' || 'S':
-                isKeyPressed = false;
-                break;
-            case 'a' || 'A':
-                isKeyPressed = false;
-                break;
-            case 'd' || 'D':
-                isKeyPressed = false;
-                break;
-        }
-    });
-    window.addEventListener('keydown', function(event) {
-        if (isKeyPressed === false){
-            switch (event.key){
-                case 'w' || 'W':
-                    isKeyPressed = true;
-                    player.move(Direction.UP)
-                    break;
-                case 's' || 'S':
-                    isKeyPressed = true;
-                    player.move(Direction.DOWN)
-                    break;
-                case 'a' || 'A':
-                    isKeyPressed = true;
-                    player.move(Direction.LEFT)
-                    break;
-                case 'd' || 'D':
-                    isKeyPressed = true;
-                    player.move(Direction.RIGHT)
-                    break;
-            }
-        }
-    });
+    // // check pressed keys
+    // window.addEventListener('keyup', function(event) {
+    //     switch (event.key){
+    //         case 'w' || 'W':
+    //             isKeyPressed = false;
+    //             break;
+    //         case 's' || 'S':
+    //             isKeyPressed = false;
+    //             break;
+    //         case 'a' || 'A':
+    //             isKeyPressed = false;
+    //             break;
+    //         case 'd' || 'D':
+    //             isKeyPressed = false;
+    //             break;
+    //     }
+    // });
+    // window.addEventListener('keydown', function(event) {
+    //     if (isKeyPressed === false){
+    //         switch (event.key){
+    //             case 'w' || 'W':
+    //                 isKeyPressed = true;
+    //                 player.move(Direction.UP)
+    //                 break;
+    //             case 's' || 'S':
+    //                 isKeyPressed = true;
+    //                 player.move(Direction.DOWN)
+    //                 break;
+    //             case 'a' || 'A':
+    //                 isKeyPressed = true;
+    //                 player.move(Direction.LEFT)
+    //                 break;
+    //             case 'd' || 'D':
+    //                 isKeyPressed = true;
+    //                 player.move(Direction.RIGHT)
+    //                 break;
+    //         }
+    //     }
+    // });
+
+    document.getElementById("up").onclick = function() {
+        player.move(Direction.UP)
+    }
+    document.getElementById("down").onclick = function() {
+        player.move(Direction.DOWN)
+    }
+    document.getElementById("left").onclick = function() {
+        player.move(Direction.LEFT)
+    }
+    document.getElementById("right").onclick = function() {
+        player.move(Direction.RIGHT)
+    }
 
     // draw the map
     drawScreen();
@@ -123,6 +136,6 @@ function drawScreen() {
         content += "<br>";
     }
     content += `X: ${player.position.x}; Y: ${player.position.y}` + "<br>";
-    content += `${isKeyPressed}`;
+    // content += `${isKeyPressed}`;
     document.getElementById("paragraph").innerHTML = content;
 }

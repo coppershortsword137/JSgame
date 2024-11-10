@@ -6,6 +6,35 @@ body {
 }
 #paragraph {
     /* transform: translate(0%, 120%); */
+    user-select: none;
     font-family: 'Courier New', Courier, monospace;
     color: coral;
+}
+.movement-button {
+    user-select: none;
+    background-color: transparent;
+    border: 2px solid #af6a4c; /* Green border */
+    color: #af6a4c; /* Green text */
+    padding: 32px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.movement-button:hover {
+    background-color: #af6a4c; /* Green background on hover */
+    color: white; /* White text on hover */
+}
+#up {
+    font-size: 20px;
+}
+#left {
+    transform: translate(-80px, -90px);
+}
+#right {
+    transform: translate(80px, -180px);
 }
